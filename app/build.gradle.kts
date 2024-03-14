@@ -1,6 +1,9 @@
 plugins {
   alias(libs.plugins.androidApplication)
   alias(libs.plugins.jetbrainsKotlinAndroid)
+  alias(libs.plugins.org.jetbrains.kotlin.kapt)
+  alias(libs.plugins.ksp)
+
 }
 
 android {
@@ -37,7 +40,7 @@ android {
     compose = true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.1"
+    kotlinCompilerExtensionVersion = "1.5.5"
   }
   packaging {
     resources {
@@ -63,4 +66,15 @@ dependencies {
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
+
+  //
+  implementation(libs.retrofit)
+  implementation(libs.converter.gson)
+
+  implementation(libs.androidx.room.runtime)
+  ksp(libs.androidx.room.compiler)
+  implementation(libs.androidx.room.ktx)
+
+  implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
