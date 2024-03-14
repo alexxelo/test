@@ -6,12 +6,12 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface Repository {
-  suspend fun getPerson():Response<UserResponse>
+  suspend fun getUser():Response<UserResponse>
 
 
   //db
-  fun getPersonsStream():Flow<List<UserEntity>>
-  fun getPersonStream(id:Int):Flow<UserEntity>
+  fun getUsersStream():Flow<List<UserEntity>>
+  fun getUserStream(id:String):Flow<UserEntity>
 
 
 }

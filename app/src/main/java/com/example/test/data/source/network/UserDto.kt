@@ -1,9 +1,14 @@
 package com.example.test.data.source.network
 
+import com.example.test.domain.models.UserDetails
+
+
 data class UserResponse(
   val results: List<User>,
   val info: Info
 )
+
+
 data class User(
   val gender: String,
   val name: UserName,
@@ -85,3 +90,54 @@ data class Info(
   val page: Int,
   val version: String
 )
+fun UserResponse.toUserDetails(): UserDetails {
+  val user = results.first()
+  val name = user.name
+  val location = user.location
+  val street = location.street
+  val coordinates = location.coordinates
+  val timezone = location.timezone
+  val login = user.login
+  val dob = user.dob
+  val registered = user.registered
+  val id = user.id
+  val picture = user.picture
+  val info = info
+
+  return UserDetails(
+    uuid = login.uuid,
+    gender = user.gender,
+    title = name.title,
+    firstName = name.first,
+    lastName = name.last,
+    streetNumber = street.number,
+    streetName = street.name,
+    city = location.city,
+    state = location.state,
+    country = location.country,
+    postcode = location.postcode,
+    latitude = coordinates.latitude,
+    longitude = coordinates.longitude,
+    timezoneOffset = timezone.offset,
+    timezoneDescription = timezone.description,
+    email = user.email,
+    username = login.username,
+    password = login.password,
+    salt = login.salt,
+    md5 = login.md5,
+    sha1 = login.sha1,
+    sha256 = login.sha256,
+    dobDate = dob.date,
+    dobAge = dob.age,
+    registeredDate = registered.date,
+    registeredAge = registered.age,
+    phone = user.phone,
+    cell = user.cell,
+    idName = id.name,
+    idValue = id.value,
+    pictureLarge = picture.large,
+    pictureMedium = picture.medium,
+    pictureThumbnail = picture.thumbnail,
+    nat = user.nat
+  )
+}

@@ -1,12 +1,6 @@
-package com.example.test.data.source.local
+package com.example.test.domain.models
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.test.domain.models.UserDetails
-
-@Entity(tableName = "users")
-data class UserEntity(
-  @PrimaryKey
+data class UserDetails(
   val uuid: String,
   val gender: String,
   val title: String,
@@ -41,41 +35,4 @@ data class UserEntity(
   val pictureMedium: String,
   val pictureThumbnail: String,
   val nat: String
-)
-
-fun UserEntity.toUserDetails(): UserDetails = UserDetails(
-  uuid,
-  gender,
-  title,
-  firstName,
-  lastName,
-  streetNumber,
-  streetName,
-  city,
-  state,
-  country,
-  postcode,
-  latitude,
-  longitude,
-  timezoneOffset,
-  timezoneDescription,
-  email,
-  username,
-  password,
-  salt,
-  md5,
-  sha1,
-  sha256,
-  dobDate,
-  dobAge,
-  registeredDate,
-  registeredAge,
-  phone,
-  cell,
-  idName,
-  idValue,
-  pictureLarge,
-  pictureMedium,
-  pictureThumbnail,
-  nat
 )
