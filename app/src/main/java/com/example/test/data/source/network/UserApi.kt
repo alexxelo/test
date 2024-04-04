@@ -4,6 +4,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface UserApi {
-  @GET("https://randomuser.me/api/")
+  @GET("/api/")
   suspend fun getUser():Response<UserResponse>
 }

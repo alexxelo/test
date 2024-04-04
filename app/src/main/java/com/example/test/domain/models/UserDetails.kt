@@ -1,5 +1,7 @@
 package com.example.test.domain.models
 
+import com.example.test.data.source.local.UserEntity
+
 data class UserDetails(
   val uuid: String,
   val gender: String,
@@ -30,9 +32,46 @@ data class UserDetails(
   val phone: String,
   val cell: String,
   val idName: String,
-  val idValue: String,
+  val idValue: String? = "",
   val pictureLarge: String,
   val pictureMedium: String,
   val pictureThumbnail: String,
   val nat: String
+)
+
+fun UserDetails.toUserEntity(): UserEntity = UserEntity(
+  uuid,
+  gender,
+  title,
+  firstName,
+  lastName,
+  streetNumber,
+  streetName,
+  city,
+  state,
+  country,
+  postcode,
+  latitude,
+  longitude,
+  timezoneOffset,
+  timezoneDescription,
+  email,
+  username,
+  password,
+  salt,
+  md5,
+  sha1,
+  sha256,
+  dobDate,
+  dobAge,
+  registeredDate,
+  registeredAge,
+  phone,
+  cell,
+  idName,
+  idValue,
+  pictureLarge,
+  pictureMedium,
+  pictureThumbnail,
+  nat
 )
