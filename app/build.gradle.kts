@@ -3,6 +3,7 @@ plugins {
   alias(libs.plugins.jetbrainsKotlinAndroid)
   alias(libs.plugins.org.jetbrains.kotlin.kapt)
   alias(libs.plugins.ksp)
+  alias(libs.plugins.hilt)
 
 }
 
@@ -77,4 +78,12 @@ dependencies {
 
   implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+  implementation(libs.coil.compose)
+
+
+  implementation(libs.androidx.navigation.compose)
+  implementation(libs.androidx.navigation.ui.ktx)
+  implementation(libs.androidx.hilt.navigation.compose)
+
 }

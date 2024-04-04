@@ -75,7 +75,7 @@ data class UserRegistered(
 
 data class UserId(
   val name: String,
-  val value: String
+  val value: String? = ""
 )
 
 data class UserPicture(

@@ -1,5 +1,6 @@
 package com.example.test.domain.use_cases
 
+import android.util.Log
 import com.example.test.Resource
 import com.example.test.data.source.network.toUserDetails
 import com.example.test.domain.Repository
@@ -13,8 +14,10 @@ class GetUserUseCase @Inject constructor(private val repository: Repository) {
   operator fun invoke(): Flow<Resource<UserDetails>> = flow {
     try {
       emit(Resource.Loading<UserDetails>())
-      val user = repository.getUser().body()!!.toUserDetails()
-      emit(Resource.Success<UserDetails>(user))
+      val user = repository.getUser().body()
+      Log.d("Debug"," user = $user")
+
+      emit(Resource.Success(user?.toUserDetails()))
 
     } catch (e: HttpException){
       emit(Resource.Error<UserDetails>(e.localizedMessage ?: "An unexpected error is occurred"))

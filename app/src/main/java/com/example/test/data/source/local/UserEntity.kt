@@ -36,7 +36,7 @@ data class UserEntity(
   val phone: String,
   val cell: String,
   val idName: String,
-  val idValue: String,
+  val idValue: String? = "",
   val pictureLarge: String,
   val pictureMedium: String,
   val pictureThumbnail: String,
