@@ -23,7 +23,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -34,7 +33,11 @@ import com.example.test.R
 fun UserInfoScreen(
   navController: NavController,
   modifier: Modifier = Modifier,
-  viewModel: UserInfoViewModel = hiltViewModel(),
+  viewModel: UserInfoViewModel,
+  onAddressClick: (latitude: String, longitude: String) -> Unit,
+  onPhoneClick: (phoneNumber: String) -> Unit,
+  onEmailClick: (email: String) -> Unit
+
 ) {
   val state = viewModel.state.value
   state.user?.let { user ->
@@ -69,8 +72,8 @@ fun UserInfoScreen(
             .build(),
           contentDescription = stringResource(id = R.string.user_avatar),
           modifier = Modifier
-            .size(360.dp)
-            .padding(bottom = 16.dp),
+            .padding(bottom = 16.dp)
+            .size(360.dp),
           contentScale = ContentScale.Fit,
 
           error = painterResource(id = R.drawable.ic_broken_image),
@@ -83,12 +86,13 @@ fun UserInfoScreen(
         Text(
           text = "Address: " + user.country + ", " + user.state +
               ", " + user.city + ", " + user.streetName + ", " + "${user.streetNumber}, " + user.postcode,
-          modifier = Modifier.clickable { }
+          modifier = Modifier.clickable {
+            onAddressClick(user.latitude, user.longitude)
+          }
         )
-        Text(text = "Phone: +" + user.phone, modifier = Modifier.clickable { })
-        Text(text = "email: " + user.email, modifier = Modifier.clickable { })
+        Text(text = "Phone: +" + user.phone, modifier = Modifier.clickable { onPhoneClick(user.phone) })
+        Text(text = "email: " + user.email, modifier = Modifier.clickable { onEmailClick(user.email) })
         Text(text = "Registered date: " + user.registeredDate)
-
       }
     }
   }

@@ -8,4 +8,5 @@ interface DataSource<T> {
   fun getAll(): Flow<List<T>>
   suspend fun insert(userEntity: UserEntity)
   fun getPersonById(id: String): Flow<T>
+  suspend fun deleteAll()
 }

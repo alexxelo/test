@@ -1,4 +1,4 @@
-package com.example.test.ui.main
+package com.example.test.ui.users_list_screen
 
 import com.example.test.domain.models.UserDetails
 

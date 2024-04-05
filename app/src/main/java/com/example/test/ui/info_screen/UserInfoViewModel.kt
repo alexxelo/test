@@ -1,6 +1,5 @@
 package com.example.test.ui.info_screen
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -24,7 +23,6 @@ class UserInfoViewModel @Inject constructor(
 
   init {
     savedStateHandle.get<String>("id")?.let { id ->
-      Log.d("Debug", " user id = $id")
       getUserById(id)
     }
   }

@@ -16,4 +16,8 @@ class UsersDataSource @Inject constructor(private val dao: UserDao) : DataSource
   override fun getPersonById(id: String): Flow<UserEntity> {
     return dao.getPersonById(id)
   }
+
+  override suspend fun deleteAll() {
+    dao.deleteALl()
+  }
 }

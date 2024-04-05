@@ -28,4 +28,8 @@ class RepositoryImpl @Inject constructor(
   override fun getUserStream(id: String): Flow<UserEntity> {
     return userDs.getPersonById(id)
   }
+
+  override suspend fun deleteAll() {
+    userDs.deleteAll()
+  }
 }

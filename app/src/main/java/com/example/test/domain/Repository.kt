@@ -11,6 +11,7 @@ interface Repository {
   //db
   fun getUsersStream():Flow<List<UserEntity>>
   fun getUserStream(id:String):Flow<UserEntity>
+  suspend fun deleteAll()
 
 
 }
